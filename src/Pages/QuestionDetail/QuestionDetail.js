@@ -12,7 +12,7 @@ const SingleQuestion = () => {
   const questionByPostId = async () => {
     try {
       const question = await axios.get(
-        `http://localhost:8000/api/questions/${params.id}`
+        `${process.env.REACT_APP_base_url}/api/questions/${params.id}`
       );
       setQuestion(question.data.data);
     } catch (err) {
@@ -22,7 +22,7 @@ const SingleQuestion = () => {
   const answersByQuestionId = async () => {
     try {
       const answersRes = await axios.get(
-        `http://localhost:8000/api/answer/${question?.question_id}`
+        `${process.env.REACT_APP_base_url}/api/answer/${question?.question_id}`
       );
       setAnswers(answersRes.data.data);
     } catch (err) {
